@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Executive Command | 10 Words Daily • Vocabulary • Articulation • Presence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* Premium Navigation */
+        .nav {
+            background: #0f172a;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #fbbf24;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+
+        .date-badge {
+            background: #1e293b;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #fbbf24;
+            font-weight: 500;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 5%;
+        }
+
+        /* Header Stats */
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .daily-progress {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            font-weight: 500;
+        }
+
+        .daily-progress span {
+            color: #fbbf24;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .streak-badge {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #0f172a;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Word Grid */
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .word-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #fbbf24;
+        }
+
+        .word-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #f1f5f9;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .word-header {
+            margin-bottom: 1rem;
+            padding-right: 2rem;
+        }
+
+        .word-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .word-pronunciation {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .word-definition {
+            color: #334155;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .executive-example {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 3px solid #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .word-meme {
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .meme-emoji {
+            font-size: 2rem;
+        }
+
+        .word-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .play-audio {
+            background: none;
+            border: none;
+            color: #fbbf24;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .play-audio:hover {
+            background: #fef3c7;
+        }
+
+        .mark-learned {
+            background: #f1f5f9;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mark-learned:hover {
+            background: #fbbf24;
+            color: #0f172a;
+        }
+
+        /* Video Section */
+        .video-showcase {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 30px;
+            padding: 2rem;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .video-showcase h2 {
+            color: #fbbf24;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .video-card {
+            background: #2d3a4f;
+            border-radius: 15px;
+            padding: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .video-card:hover {
+            transform: scale(1.02);
+        }
+
+        .video-thumbnail {
+            background: #1e293b;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            border: 2px dashed #fbbf24;
+            cursor: pointer;
+        }
+
+        .play-icon {
+            font-size: 2rem;
+            color: #fbbf24;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-question {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 15px;
+        }
+
+        .quiz-question h4 {
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid #e2e8f0;
+        }
+
+        .quiz-option:hover {
+            border-color: #fbbf24;
+            background: #fef3c7;
+        }
+
+        .quiz-option.selected {
+            background: #fbbf24;
+            color: #0f172a;
+            border-color: #f59e0b;
+        }
+
+        .quiz-option.correct {
+            background: #86efac;
+            border-color: #22c55e;
+        }
+
+        .quiz-option.incorrect {
+            background: #fecaca;
+            border-color: #ef4444;
+        }
+
+        .submit-quiz {
+            background: #fbbf24;
+            color: #0f172a;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-quiz:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+        }
+
+        .score-display {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 1rem;
+            border-radius: 10px;
+            background: #f1f5f9;
+        }
+
+        /* Progress Tracker */
+        .progress-tracker {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .words-completed {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .word-chip {
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .word-chip.completed {
+            background: #fbbf24;
+            color: #0f172a;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 4rem;
+            border-top: 3px solid #fbbf24;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer h3 {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer-links li:hover {
+            color: #fbbf24;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .words-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .word-card {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="logo">🗣️ The Executive Command • 10 Words Daily</div>
+        <div class="nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">Words</a>
+            <a href="#">Videos</a>
+            <a href="#">Quiz</a>
+            <a href="#">Progress</a>
+        </div>
+        <div class="date-badge" id="currentDate"></div>
+    </nav>
+
+    <div class="container">
+        <!-- Stats Header -->
+        <div class="stats-header">
+            <div class="daily-progress">
+                📊 Today's Progress: <span id="completedCount">0</span>/10 words mastered
+            </div>
+            <div class="streak-badge">
+                🔥 7 Day Streak • Top 1% Learner
+            </div>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="progress-tracker">
+            <h3>📈 Today's Learning Journey</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="words-completed" id="wordsCompleted">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Words Grid - 10 Words -->
+        <div class="words-grid" id="wordsGrid">
+            <!-- Words will be inserted by JavaScript -->
+        </div>
+
+        <!-- Video Showcase Section -->
+        <div class="video-showcase">
+            <h2>🎬 Words in Action • Video Examples</h2>
+            <div class="video-grid" id="videoGrid">
+                <!-- Videos will be inserted by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section" id="quiz">
+            <div class="quiz-header">
+                <h2>📝 Daily Mastery Quiz • Test Your 10 Words</h2>
+                <div class="streak-badge" style="background: #f1f5f9; color: #0f172a;">10 Questions</div>
+            </div>
+            
+            <div id="quizQuestions">
+                <!-- Quiz questions will be inserted by JavaScript -->
+            </div>
+
+            <button class="submit-quiz" onclick="checkQuiz()">Submit Answers & See Score</button>
+            <div class="score-display" id="score"></div>
+        </div>
+
+        <!-- Daily Challenge -->
+        <div style="background: linear-gradient(135deg, #fbbf24, #f59e0b); border-radius: 20px; padding: 2rem; margin: 2rem 0; color: #0f172a;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">⚡ Executive Challenge</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Use all 10 words in conversations today. Text us how it went!</p>
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <span style="background: #0f172a; color: white; padding: 0.75rem 1.5rem; border-radius: 50px; cursor: pointer;">📱 Share Progress</span>
+                <span style="background: #0f172a; color: white; padding: 0.75rem 1.5rem; border-radius: 50px; cursor: pointer;">🏆 View Leaderboard</span>
+                <span style="background: #0f172a; color: white; padding: 0.75rem 1.5rem; border-radius: 50px; cursor: pointer;">🎯 Download Practice PDF</span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h3>📚 Daily 10 Words</h3>
+                <ul class="footer-links">
+                    <li>Word Archive (3000+ words)</li>
+                    <li>Video Library</li>
+                    <li>Meme Gallery</li>
+                    <li>Pronunciation Guide</li>
+                </ul>
+            </div>
+            <div>
+                <h3>🎯 Executive Skills</h3>
+                <ul class="footer-links">
+                    <li>Articulation Drills</li>
+                    <li>Storytelling Framework</li>
+                    <li>Confidence Builders</li>
+                    <li>Presence Training</li>
+                </ul>
+            </div>
+            <div>
+                <h3>📊 Progress</h3>
+                <ul class="footer-links">
+                    <li>My Dashboard</li>
+                    <li>Streaks & Badges</li>
+                    <li>Daily Quizzes</li>
+                    <li>Mastery Certificates</li>
+                </ul>
+            </div>
+            <div>
+                <h3>🤝 Community</h3>
+                <ul class="footer-links">
+                    <li>Executive Forum</li>
+                    <li>Share Your Story</li>
+                    <li>Request Words</li>
+                    <li>Premium Coaching</li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem; color: #475569;">
+            © 2026 The Executive Command • Master 10 Words Daily • 🗣️💼✨
+        </div>
+    </footer>
+
+    <script>
+        // Executive Vocabulary Database - 10 Words for Today
+        const todaysWords = [
+            {
+                word: "Persuasive",
+                pronunciation: "/pərˈsweɪsɪv/",
+                definition: "Having the power to influence or convince others to take action or adopt a belief.",
+                example: "Her persuasive presentation convinced the board to approve the merger, turning skeptics into advocates.",
+                meme: "😏➡️💡 'Me before coffee trying to be persuasive'",
+                videoExample: "Steve Jobs iPhone Launch - The Art of Persuasion"
+            },
+            {
+                word: "Articulate",
+                pronunciation: "/ɑːrˈtɪkjuleɪt/",
+                definition: "Able to express thoughts and ideas clearly and effectively in speech or writing.",
+                example: "The CEO's articulate response during the press conference restored investor confidence.",
+                meme: "🎤✨ 'When you finally say exactly what you meant'",
+                videoExample: "Martin Luther King Jr. - I Have a Dream"
+            },
+            {
+                word: "Strategic",
+                pronunciation: "/strəˈtiːdʒɪk/",
+                definition: "Carefully designed or planned to serve a particular purpose or gain an advantage.",
+                example: "Her strategic decision to enter emerging markets early doubled company revenue.",
+                meme: "♟️🧠 'Playing 4D chess while others play checkers'",
+                videoExample: "Sun Tzu - The Art of War Explained"
+            },
+            {
+                word: "Influential",
+                pronunciation: "/ˌɪnfluˈenʃl/",
+                definition: "Having the power to cause changes or affect important decisions or people.",
+                example: "As an influential thought leader, his opinion shaped industry standards.",
+                meme: "👑📢 'When your LinkedIn post changes company policy'",
+                videoExample: "Oprah Winfrey - Golden Globes Speech"
+            },
+            {
+                word: "Diplomatic",
+                pronunciation: "/ˌdɪpləˈmætɪk/",
+                definition: "Having or showing skill in dealing with sensitive matters or people tactfully.",
+                example: "Her diplomatic approach resolved the conflict without damaging client relationships.",
+                meme: "🤝😌 'Walking the tightrope between truth and tact'",
+                videoExample: "Nelson Mandela - Leadership Lessons"
+            },
+            {
+                word: "Resilient",
+                pronunciation: "/rɪˈzɪliənt/",
+                definition: "Able to recover quickly from difficulties or adapt to change.",
+                example: "The resilient team bounced back from the failed product launch to create a market leader.",
+                meme: "🪃💪 'Like a boomerang, but for executives'",
+                videoExample: "J.K. Rowling - Harvard Commencement Speech"
+            },
+            {
+                word: "Visionary",
+                pronunciation: "/ˈvɪʒəneri/",
+                definition: "Thinking about or planning the future with imagination and wisdom.",
+                example: "The visionary leader anticipated market trends five years ahead of competitors.",
+                meme: "🔮🚀 'Seeing the future while others see problems'",
+                videoExample: "Elon Musk - Tesla Master Plan"
+            },
+            {
+                word: "Decisive",
+                pronunciation: "/dɪˈsaɪsɪv/",
+                definition: "Able to make decisions quickly and effectively, especially in difficult situations.",
+                example: "The CEO's decisive action during the crisis saved the company from bankruptcy.",
+                meme: "⚡✅ 'No hesitation, no regrets'",
+                videoExample: "Indra Nooyi - PepsiCo Leadership"
+            },
+            {
+                word: "Empathetic",
+                pronunciation: "/ˌempəˈθetɪk/",
+                definition: "Showing an ability to understand and share the feelings of others.",
+                example: "His empathetic leadership style increased employee retention by 40%.",
+                meme: "❤️🤝 'Walking in their Gucci loafers'",
+                videoExample: "Satya Nadella - Microsoft Culture Transformation"
+            },
+            {
+                word: "Tenacious",
+                pronunciation: "/təˈneɪʃəs/",
+                definition: "Tending to keep a firm hold on something; persistent and determined.",
+                example: "Her tenacious pursuit of the deal finally won over the skeptical clients.",
+                meme: "🐶💼 'Like a bulldog with a briefcase'",
+                videoExample: "Howard Schultz - Starbucks Comeback Story"
+            }
+        ];
+
+        // Current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+
+        // Track completed words
+        let completedWords = new Array(10).fill(false);
+        let quizAnswers = {};
+        let selectedOptions = {};
+
+        // Populate words grid
+        function populateWords() {
+            const grid = document.getElementById('wordsGrid');
+            grid.innerHTML = '';
+
+            todaysWords.forEach((word, index) => {
+                const card = document.createElement('div');
+                card.className = 'word-card';
+                card.id = `word-${index}`;
+                card.innerHTML = `
+                    <div class="word-number">${index + 1}</div>
+                    <div class="word-header">
+                        <div class="word-title">${word.word}</div>
+                        <div class="word-pronunciation">${word.pronunciation}</div>
+                    </div>
+                    <div class="word-definition">${word.definition}</div>
+                    <div class="executive-example">📌 ${word.example}</div>
+                    <div class="word-meme">
+                        <span class="meme-emoji">${word.meme.split(' ')[0]}</span>
+                        <span>${word.meme}</span>
+                    </div>
+                    <div class="word-footer">
+                        <button class="play-audio" onclick="playPronunciation(${index})">🔊 Pronounce</button>
+                        <button class="mark-learned" onclick="toggleLearned(${index})" id="btn-${index}">Mark Learned</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Populate videos
+        function populateVideos() {
+            const videoGrid = document.getElementById('videoGrid');
+            videoGrid.innerHTML = '';
+
+            todaysWords.forEach((word, index) => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.innerHTML = `
+                    <div class="video-thumbnail" onclick="playVideo('${word.videoExample}')">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <h4 style="color: #fbbf24; margin-bottom: 0.5rem;">${word.word}</h4>
+                    <p style="color: #94a3b8; font-size: 0.9rem;">${word.videoExample}</p>
+                `;
+                videoGrid.appendChild(card);
+            });
+        }
+
+        // Populate quiz
+        function populateQuiz() {
+            const quizDiv = document.getElementById('quizQuestions');
+            quizDiv.innerHTML = '';
+
+            todaysWords.forEach((word, index) => {
+                const question = document.createElement('div');
+                question.className = 'quiz-question';
+                question.id = `quiz-q-${index}`;
+                
+                // Generate 4 options (1 correct definition, 3 wrong ones)
+                const wrongDefinitions = [
+                    "To ignore or dismiss something",
+                    "A type of financial report",
+                    "The opposite of proactive",
+                    "A technical malfunction",
+                    "Random chance occurrence",
+                    "A legal document type"
+                ];
+                
+                const options = [
+                    word.definition,
+                    wrongDefinitions[index % wrongDefinitions.length],
+                    wrongDefinitions[(index + 2) % wrongDefinitions.length],
+                    wrongDefinitions[(index + 4) % wrongDefinitions.length]
+                ];
+                
+                // Shuffle options
+                const shuffled = [...options].sort(() => Math.random() - 0.5);
+                
+                question.innerHTML = `
+                    <h4>${index + 1}. What does "${word.word}" mean?</h4>
+                    <div class="quiz-options" id="quiz-options-${index}">
+                        ${shuffled.map((opt, optIndex) => `
+                            <div class="quiz-option" onclick="selectQuizOption(${index}, ${optIndex}, '${opt}')">
+                                ${opt}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizDiv.appendChild(question);
+                
+                // Store correct answer
+                quizAnswers[index] = word.definition;
+            });
+        }
+
+        // Select quiz option
+        function selectQuizOption(questionIndex, optionIndex, answer) {
+            const container = document.getElementById(`quiz-options-${questionIndex}`);
+            const options = container.children;
+            
+            // Remove selected class from all
+            Array.from(options).forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked
+            options[optionIndex].classList.add('selected');
+            
+            // Store answer
+            selectedOptions[questionIndex] = answer;
+        }
+
+        // Check quiz
+        function checkQuiz() {
+            let correct = 0;
+            
+            for (let i = 0; i < 10; i++) {
+                const container = document.getElementById(`quiz-options-${i}`);
+                if (!container) continue;
+                
+                const options = container.children;
+                const userAnswer = selectedOptions[i];
+                const correctAnswer = quizAnswers[i];
+                
+                Array.from(options).forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect');
+                    
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add('correct');
+                    }
+                    
+                    if (opt.textContent === userAnswer && userAnswer !== correctAnswer) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+                
+                if (userAnswer === correctAnswer) {
+                    correct++;
+                }
+            }
+            
+            const percentage = (correct / 10) * 100;
+            let feedback = '';
+            
+            if (percentage === 100) {
+                feedback = '🏆 EXECUTIVE CHAIRMAN LEVEL: Perfect score! You\'re a language master!';
+            } else if (percentage >= 80) {
+                feedback = '📊 SENIOR EXECUTIVE LEVEL: Excellent! You\'ve mastered most words!';
+            } else if (percentage >= 60) {
+                feedback = '📈 MANAGER LEVEL: Good progress! Review the words you missed.';
+            } else {
+                feedback = '🌱 ASSOCIATE LEVEL: Keep practicing! Watch the videos and try again.';
+            }
+            
+            document.getElementById('score').innerHTML = `
+                <strong>Your Score: ${correct}/10 (${percentage}%)</strong><br>
+                ${feedback}
+            `;
+        }
+
+        // Toggle learned status
+        function toggleLearned(index) {
+            completedWords[index] = !completedWords[index];
+            const btn = document.getElementById(`btn-${index}`);
+            btn.textContent = completedWords[index] ? '✓ Learned' : 'Mark Learned';
+            btn.style.background = completedWords[index] ? '#86efac' : '#f1f5f9';
+            
+            updateProgress();
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const completed = completedWords.filter(Boolean).length;
+            document.getElementById('completedCount').textContent = completed;
+            const percentage = (completed / 10) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            
+            // Update word chips
+            const container = document.getElementById('wordsCompleted');
+            container.innerHTML = '';
+            todaysWords.forEach((word, index) => {
+                const chip = document.createElement('span');
+                chip.className = `word-chip ${completedWords[index] ? 'completed' : ''}`;
+                chip.innerHTML = `${completedWords[index] ? '✅' : '⭕'} ${word.word}`;
+                container.appendChild(chip);
+            });
+        }
+
+        // Play pronunciation (simulated)
+        function playPronunciation(index) {
+            const word = todaysWords[index].word;
+            alert(`🔊 Pronunciation of "${word}": ${todaysWords[index].pronunciation}\n\n(In a full version, this would play an audio file)`);
+        }
+
+        // Play video (simulated)
+        function playVideo(videoTitle) {
+            alert(`🎬 Now playing: ${videoTitle}\n\n(In a full version, this would open a video player)`);
+        }
+
+        // Initialize everything
+        populateWords();
+        populateVideos();
+        populateQuiz();
+        updateProgress();
+    </script>
+</body>
+</html>
